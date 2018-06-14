@@ -1,7 +1,7 @@
 # rcah18_pepper_navigation
 
 ## Installation Instructions
-1. Download the urg_node, laser_proc, and urg_c ros packages from github, or use the script `26_Hokuyo_LIDAR_ROS_Packages.sh` in the computer_setup scripts repository.
+1. Download the urg_node, laser_proc, and urg_c ros packages from github, or use the script `26_Hokuyo_LIDAR_ROS_Packages.sh` in the pepper_computer_setup scripts repository.
 2. Make a bash alias `alias chmodACM0='sudo chmod a+rw /dev/ttyACM0'`
 3. Clone the hector_slam ros package in your catkin_ws using the command: `git clone https://github.com/tu-darmstadt-ros-pkg/hector_slam.git`
 4. Copy the mapping.launch file in the rcah18_pepper_navigation/hector_slam/hector_mapping/launch folder to the hector_slam/hector_mapping/launch folder.
