@@ -1,0 +1,5 @@
+<launch>
+	<node pkg="$(find rcah18_pepper_navigation)" type="reset_pepper_head" name="reset_pepper_head" output="screen">
+      <param name="how_often_reset_head" value="10"/>
+    </node>
+</launch>

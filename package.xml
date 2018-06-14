@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<package>
+  <name>rcah18_pepper_navigation</name>
+  <version>0.0.0</version>
+  <description>The rcah18_pepper_navigation package</description>
+
+  <maintainer email="tpereira@andrew.cmu.edu">Tiago Pereira</maintainer>
+
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>std_srvs</build_depend>
+  <run_depend>sensor_msgs</run_depend>
+  <run_depend>geometry_msgs</run_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>std_srvs</run_depend>
+  <run_depend>actionlib</run_depend>
+  <run_depend>naoqi_bridge_msgs</run_depend>
+  <run_depend>rospy</run_depend>
+  <run_depend>map_server</run_depend>
+  <run_depend>amcl</run_depend>
+  <run_depend>gmapping</run_depend>
+  <run_depend>move_base</run_depend>
+  <run_depend>pointcloud_to_laserscan</run_depend>
+  <run_depend>rviz</run_depend>
+  <run_depend>pepper_bringup</run_depend>
+  <run_depend>joy</run_depend>
+  <run_depend>teleop_twist_joy</run_depend>
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+  </export>
+</package>

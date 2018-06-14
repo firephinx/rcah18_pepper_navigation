@@ -1,0 +1,4 @@
+<launch>
+  <include file="$(find rcah18_pepper_navigation)/launch/pcl2laser.launch" /> <!-- Converts depth image to laserscan -->
+  <include file="$(find rcah18_pepper_navigation)/launch/gmapping.launch" />  <!-- Runs SLAM -->
+</launch>

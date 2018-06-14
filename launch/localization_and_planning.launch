@@ -1,0 +1,4 @@
+<launch>
+  <include file="$(find rcah18_pepper_navigation)/launch/amcl_omni.launch" /> <!-- Runs localization -->
+  <include file="$(find rcah18_pepper_navigation)/launch/move_base.launch" /> <!-- Runs navigation -->
+</launch>

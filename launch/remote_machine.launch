@@ -1,0 +1,10 @@
+<launch>
+  <!-- Starts joystick teleoperation manager -->
+  <include file="$(find rcah18_pepper_navigation)/launch/teleop.launch" />
+
+  <!-- Set rviz with default Pepper configuration -->
+  <node pkg="rviz" type="rviz" name="visualizer" output="screen" args="-d $(find rcah18_pepper_navigation)/.rviz/pepper.rviz"></node>
+	<!-- <node pkg="$(find rcah18_pepper_navigation)" type="reset_pepper_head" name="reset_pepper_head" output="screen">
+      <param name="how_often_reset_head" value="10"/>
+    </node> -->
+</launch>

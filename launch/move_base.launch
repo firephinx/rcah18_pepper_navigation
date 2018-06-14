@@ -1,0 +1,35 @@
+<launch>
+  <!-- Set default topics and tf frames -->
+  <arg name="odom_frame_id"   default="pepper_local_republisher/odom"/>
+  <arg name="base_frame_id"   default="pepper_local_republisher/base_footprint"/>
+  <arg name="global_frame_id" default="map"/>
+  <arg name="odom_topic" default="/pepper_robot/odom" />
+  <arg name="laser_topic" default="/pepper_local_republisher/pepper_robot/laser" />
+  <arg name="custom_param_file" default="$(find rcah18_pepper_navigation)/param/dummy.yaml"/>
+
+  <!-- Starts move base with DWA as local planner and NavFn as global planner -->
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find rcah18_pepper_navigation)/param/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find rcah18_pepper_navigation)/param/costmap_common_params.yaml" command="load" ns="local_costmap" />   
+    <rosparam file="$(find rcah18_pepper_navigation)/param/local_costmap_params.yaml" command="load" />   
+    <rosparam file="$(find rcah18_pepper_navigation)/param/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find rcah18_pepper_navigation)/param/dwa_local_planner_params.yaml" command="load" />
+    <rosparam file="$(find rcah18_pepper_navigation)/param/move_base_params.yaml" command="load" />
+    <rosparam file="$(find rcah18_pepper_navigation)/param/global_planner_params.yaml" command="load" />
+    <rosparam file="$(find rcah18_pepper_navigation)/param/navfn_global_planner_params.yaml" command="load" />
+    
+    <!-- reset frame_id parameters using user input data -->
+    <param name="global_costmap/global_frame" value="$(arg global_frame_id)"/>
+    <param name="global_costmap/robot_base_frame" value="$(arg base_frame_id)"/>
+    <param name="local_costmap/global_frame" value="$(arg odom_frame_id)"/>
+    <param name="local_costmap/robot_base_frame" value="$(arg base_frame_id)"/>
+    <param name="DWAPlannerROS/global_frame_id" value="$(arg odom_frame_id)"/>
+
+    <remap from="cmd_vel" to="/teleop_manager/cmd_vel_planner"/>
+    <remap from="odom" to="$(arg odom_topic)"/>
+    <remap from="scan" to="$(arg laser_topic)"/>
+    
+    <!-- Uncomment the line below to test robot navigation using rviz -->
+    <!-- <remap from="move_base_simple/goal" to="move_base_rviz/goal"/> --> 
+  </node>
+</launch>

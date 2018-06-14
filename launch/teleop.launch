@@ -1,0 +1,24 @@
+<launch>
+  <!-- Starts node to read input from joystick -->
+  <node pkg="joy" type="joy_node" name="joy" output="screen">
+    <param name="dev" value="/dev/input/js0"/>
+    <param name="deadzone" value="0.2"/>
+    <param name="autorepeat_rate" value="10"/>
+  </node>
+
+  <!-- Starts node that manages mode of operation: teleop or autonomous mode -->
+  <node pkg="rcah18_pepper_navigation" type="teleop_manager" name="teleop_manager" output="screen">
+    <!-- Mode of operation on node startup: 0 for Teleop, 1 for Autonomous -->
+    <param name="mode" value="0"/>
+    <param name="time_pressed" value="1.0"/>
+    <param name="controller_type" value="logitech"/>
+    <remap from="/teleop_manager/joy" to="/joy"/>
+    <remap from="/teleop_manager/cmd_vel" to="/cmd_vel"/>
+  </node>
+
+  <!-- Converts joystick input to velocity commands -->
+  <node pkg="teleop_twist_joy" type="teleop_node" name="joy2speed" output="screen">
+    <rosparam file="$(find rcah18_pepper_navigation)/config/joy2speed_logitech_controller.yaml" command="load" />
+    <remap from="cmd_vel" to="/teleop_manager/cmd_vel_teleop" />
+  </node>
+</launch>

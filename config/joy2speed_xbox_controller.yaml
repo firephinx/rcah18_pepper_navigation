@@ -1,0 +1,18 @@
+enable_button: 0  # Press LB to move robot with normal speed (scale_linear and scale_angular)
+enable_turbo_button: 5   # Press RB to move robot with turbo speed (scale_linear_turbo and scale_angular_turbo)
+axis_linear: # Left stick for translation (omnidirectional x-y motion, x points forward, y points to the side)
+  x: 1
+  y: 0
+scale_linear: # Normal translational speed
+  x: 0.5
+  y: 0.5
+scale_linear_turbo: # Turbo translational speed
+  x: 1.0
+  y: 1.0
+axis_angular: # Right stick for rotation
+  yaw: 3
+scale_angular: # Normal rotational speed
+  yaw: 0.5
+scale_angular_turbo: # Turbo rotational speed
+  yaw: 1
+
